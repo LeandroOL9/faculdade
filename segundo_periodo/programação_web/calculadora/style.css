@@ -1,0 +1,77 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Corpo da página */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #121212; /* fundo escuro */
+}
+
+/* Visor */
+.visor {
+    width: 260px;
+    height: 60px;
+    margin-bottom: 15px;
+    font-size: 2rem;
+    text-align: right;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    background: #1e1e1e; /* visor escuro */
+    color: #f0f0f0; /* texto claro */
+    box-shadow: inset 0 0 5px #000;
+}
+
+/* Botões */
+.btn-n {
+    width: 60px;
+    height: 60px;
+    margin: 5px;
+    font-size: 1.5rem;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+/* Botões numéricos */
+.btn-n[data-value] {
+    background: #2a2a2a;
+    color: #f0f0f0;
+}
+
+.btn-n[data-value]:hover {
+    background: #3a3a3a;
+}
+
+/* Botões de operação */
+.btn-n[data-operacao], .btn-n[data-acao] {
+    background: #ff9800;
+    color: #121212;
+}
+
+.btn-n[data-operacao]:hover, .btn-n[data-acao]:hover {
+    background: #e68900;
+}
+
+/* Layout dos botões */
+div.buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 280px;
+}
+
+/* Centralizando corpo */
+body {
+    flex-direction: column;
+    align-items: center;
+}
