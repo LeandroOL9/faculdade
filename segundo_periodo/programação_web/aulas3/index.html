@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor de moeda</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <h1>Conversor de moeda</h1>
+
+    <form>
+        <label>
+            <input type="valor" value="1">
+        </label>
+    
+        <label for="origem">de
+            <select id="origem"></select>
+        </label>
+
+        <button id="troca">⇄</button>
+
+        <label for="destino">para
+            <select id="destino"></select>
+        </label>
+        
+        <button type="submit">Converter</button>
+        <button id="btnatualizar" type="button">atualizar cotações</button>
+        <br>
+        <span id="legenda">+-</span>
+        <br>
+        <span id="resultado">-</span>
+   
+    </form>
+
+</body>
+<script src="script.js"></script>
+
+</html>
