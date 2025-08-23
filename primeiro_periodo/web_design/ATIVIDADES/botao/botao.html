@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Botão</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #443e3e;
+        }
+
+        .button {
+            margin: 10px;
+            border-radius: none;
+            color: rgb(255, 255, 255);
+            font-size: 16px;
+            font-family: 'Arial', sans-serif;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+
+        .button2:hover {
+            filter: invert(1);
+        }
+    </style>
+
+</head>
+
+<body>
+    <div style="background-color: rgb(255, 102, 0);
+                padding: 20px 60px;
+                color: rgb(255, 255, 255);" class="button">BOTÃO 1</div>
+
+
+    <div style="background-color: #e6e6e6;
+                padding: 20px 80px;
+                color: rgb(0, 0, 0);" class="button2">Botão 2 (troca cor)</div>
+
+    <div style="padding: 10px 10px; color: rgb(0, 0, 0);" class="button">
+
+        <div class="button-content">
+            <img src="icon.png" alt="icone de uma pessoa" width="40" height="40">
+            <div> entre</div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #ececec;
+        }
+
+        h1 {
+            color: #24245c;
+            text-align: center;
+            font-size: 30px;
+        }
+
+        label {
+            color: #b0b0b0;
+            font-size: 18px;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        input {
+            outline: none;
+            border: 1px solid #b0b0b0;
+            font-size: 20px;
+            box-sizing: border-box;
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #b0b0b0;
+            padding: 5px;
+        }
+
+        .enviar {
+            cursor: pointer;
+            background-color: #24245c;
+            color: #ffffff;
+            font-size: 20px;
+            font-weight: bold;
+            padding: 10px 5px;
+            width: 100%;
+            border: none;
+            margin-top: 20px;
+        }
+
+        .head {
+            background-color: #24245c;
+            position: fixed;
+            top: 0px;
+            padding: 10% 100%;
+        }
+
+        .back_ground {
+            background-color: #ffffff;
+            padding: 2% 3%;
+            border-radius: none;
+            position: absolute;
+            border-radius: 3%;
+            width: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="head"></div>
+
+    <div class="back_ground">
+        <h1>Creative Company</h1>
+        <form>
+
+            <label for="Login">Username or email</label>
+            <input type="text" id="Login">
+
+            <label for="password">Password</label>
+            <input type="password" id="password">
+
+            <div style="display: flex; align-items: center;">
+                <input type="checkbox" id="remember"
+                    style="width: 10px; padding: 10px; appearance: none; border: 1px solid #b0b0b0;">
+                <label for="remember" style="margin: 0 10px 10px 0;">Remember me</label>
+            </div>
+
+            <input type="submit" class="enviar" value="LOGIN">
+
+            <div class="links" style="margin-top: 15px; flex-direction: row;">
+                <a href="https://youtu.be/dQw4w9WgXcQ?si=D9Ie3BwN22hwq3Ig" target="_blank">Register</a>
+                <a href="https://youtu.be/0q6yphdZhUA?si=3IWIeTjeY4Mib_2L" target="_blank"
+                    style="margin-left: 75px;">Forgot your password?</a>
+                <a href="https://www.youtube.com/watch?v=y6120QOlsfU" target="_blank"
+                    style="margin-top: 15px; display: block;">Back to WPBrigade</a>
+            </div>
+
+
+        </form>
+    </div>
+</body>
+
+</html>
