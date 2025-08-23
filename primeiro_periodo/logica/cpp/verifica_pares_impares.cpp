@@ -1,7 +1,9 @@
 #include <iostream>
+#include <locale.h>
 using namespace std;
 
-int main() {
+int main(){
+    setlocale(LC_ALL, "portuguese");     
     int num1, num2;
 
     cout << "Digite dois numeros: "<<endl;
@@ -16,6 +18,5 @@ int main() {
     } else {
         cout << "O PRIMEIRO É ÍMPAR E O SEGUNDO É PAR\n";
     }
-
     return 0;
 }

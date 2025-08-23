@@ -1,11 +1,11 @@
 #include <iostream>
-#include <vector>
-
+#include <locale.h>
 using namespace std;
 
-int main()
-{
+int main(){
+    setlocale(LC_ALL, "portuguese");
     int n[20],cont=0;
+    
     for(int i=0;i<20;i++){
         cout<<"digite um numero: "<<endl;
         cin>>n[i];
@@ -14,7 +14,5 @@ int main()
         }
     }
     cout<<cont;
-
-
     return 0;
 }

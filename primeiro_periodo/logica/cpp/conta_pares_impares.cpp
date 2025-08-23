@@ -1,13 +1,10 @@
 #include <iostream>
-
+#include <locale.h>
 using namespace std;
 
-int main()
-{
-    int i, num,par,inp;
-    i=0;
-    par=0;
-    inp=0;
+int main(){
+    setlocale(LC_ALL, "portuguese");    
+    int i=0,par=0,inp=0,num;
 
     do{ cout << "Escreva um numero" << endl;
     cin>>num;

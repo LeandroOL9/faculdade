@@ -1,9 +1,8 @@
 #include <iostream>
-#include <locale>
+#include <locale.h>
 using namespace std;
 
-int main()
-{
+int main(){
     setlocale(LC_ALL, "portuguese");
     int num, fat = 1;
 
@@ -14,7 +13,6 @@ int main()
     {
         fat *= i;
     }
-
     cout << "O fatorial é: " << fat << endl;
     return 0;
 }

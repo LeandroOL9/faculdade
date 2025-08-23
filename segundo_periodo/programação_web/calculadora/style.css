@@ -1,4 +1,3 @@
-/* Reset básico */
 * {
     margin: 0;
     padding: 0;
@@ -6,7 +5,6 @@
     font-family: 'Arial', sans-serif;
 }
 
-/* Corpo da página */
 body {
     display: flex;
     justify-content: center;
@@ -15,7 +13,6 @@ body {
     background: #121212; /* fundo escuro */
 }
 
-/* Visor */
 .visor {
     width: 260px;
     height: 60px;
@@ -30,7 +27,6 @@ body {
     box-shadow: inset 0 0 5px #000;
 }
 
-/* Botões */
 .btn-n {
     width: 60px;
     height: 60px;
@@ -42,7 +38,6 @@ body {
     transition: 0.2s;
 }
 
-/* Botões numéricos */
 .btn-n[data-value] {
     background: #2a2a2a;
     color: #f0f0f0;
@@ -52,7 +47,6 @@ body {
     background: #3a3a3a;
 }
 
-/* Botões de operação */
 .btn-n[data-operacao], .btn-n[data-acao] {
     background: #ff9800;
     color: #121212;
@@ -62,7 +56,6 @@ body {
     background: #e68900;
 }
 
-/* Layout dos botões */
 div.buttons {
     display: flex;
     flex-wrap: wrap;
@@ -70,7 +63,6 @@ div.buttons {
     width: 280px;
 }
 
-/* Centralizando corpo */
 body {
     flex-direction: column;
     align-items: center;

@@ -1,11 +1,11 @@
 #include <iostream>
-#include <vector>
-
+#include <locale.h>
 using namespace std;
 
-int main()
-{
+int main(){
+    setlocale(LC_ALL, "portuguese");     
     int n[10], soma=0;
+    
     for(int i=0;i<10;i++){
         cout<<"digite um numero: "<<endl;
         cin>>n[i];
@@ -13,7 +13,6 @@ int main()
         soma=soma+n[i];
         }
     }
-cout<<soma;
-
+    cout<<soma;
     return 0;
 }

@@ -1,8 +1,5 @@
-programa
-{
-	
-	funcao inicio()
-	{
+programa{
+	funcao inicio(){
 		real n1
 
 		escreva("Digite um numero\n")
@@ -14,8 +11,4 @@ programa
 				}senao{ escreva ("positivo")}
 				}senao{escreva("negativo")}		
 			}
-		
-			
-		
-	
 }

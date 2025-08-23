@@ -1,8 +1,5 @@
-programa
-{
-	
-	funcao inicio()
-	{
+programa{	
+	funcao inicio(){
 		inteiro sanduba
 
 		real queijoG,carneG,presuntoG,queijoKg,carneKg,presuntoKg
