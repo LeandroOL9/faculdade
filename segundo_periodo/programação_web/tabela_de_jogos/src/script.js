@@ -83,7 +83,7 @@
             shortName: "Cruzeiro",
             tla: "CRU",
             crest: "https://crests.football-data.org/1771.png",
-            pontos: 0,
+            pontos: 3,
             partidasJogadas: 0,
             vitorias: 0,
             empates: 0,
@@ -98,7 +98,7 @@
             shortName: "São Paulo",
             tla: "PAU",
             crest: "https://crests.football-data.org/1776.png",
-            pontos: 0,
+            pontos: 3,
             partidasJogadas: 0,
             vitorias: 0,
             empates: 0,
@@ -323,11 +323,9 @@
             spanmane.textContent = time.name;
             tdtime.appendChild(spanmane);
 
-            
             tr.appendChild(tdpos);
             tr.appendChild(tdtime);
             tbody.appendChild(tr);
-
             tr.appendChild(tdpos);
             tr.appendChild(tdtime)
 
@@ -349,5 +347,24 @@
 
         });
     };
+
+    const classificartimes = () => {
+        times.sort((a,b)=>{
+            if(b.pontos !== a.pontos){
+                return b.pontos - a.pontos;
+            }
+            if(b.pontos !== a.pontos){
+                return b.vitorias - a.vitorias;
+            }  
+            if(b.saldoGols !== a.saldoGols){
+                return b.saldoGols - a.saldoGols;
+            }
+            if(b.golsMarcados !== a.golsMarcados){
+                return b.golsMarcados - a.golsMarcados
+            }
+        });
+    }
+
+    classificartimes();
     apresentartimes();
 })();
