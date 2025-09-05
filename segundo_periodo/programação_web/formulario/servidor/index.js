@@ -12,8 +12,7 @@ app.get('/api', (req, res) => {
 });
 
 app.post('/api', (req, res) => {
-  console.log(req.body); // aqui chegam os dados do form
-  res.send('Formulário recebido com sucesso!');
+  console.log(req.body);
 });
 
 app.listen(PORT, () => {
