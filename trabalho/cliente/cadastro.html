@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cadastro</title>
+      <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <a href="index.html">voltar</a>
+
+    <form id="reserva">
+        <label for="title">Titulo: 
+            <input type="text" id="title" name="title" placeholder="Titulo da Reserva">
+        </label>
+
+        <label for="start">Data e hora Inicio: 
+            <input type="datetime-local" id="start" name="start">
+        </label>
+
+        <label for="end">Data e hora Fim: 
+            <input type="datetime-local" id="end" name="end">
+        </label>        
+
+        <label for="requester">Solicitante: 
+            <input type="text" id="requester" name="requester" placeholder="Nome Sobrenome">
+        </label>
+
+        <label for="salas">Sala: 
+            <select id="salas" name="salas"></select>
+        </label>
+
+        <button type="submit">Enviar</button>
+    </form>
+</body>
+</html>

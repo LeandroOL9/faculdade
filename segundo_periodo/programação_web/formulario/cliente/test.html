@@ -1,0 +1,85 @@
+
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Reserva de Salas — UNIVALI</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <h1>Reserva de Salas — UNIVALI</h1>
+    <nav>
+      <button id="btn-view-user" class="nav-btn active">Usuário</button>
+      <button id="btn-view-admin" class="nav-btn">Admin</button>
+    </nav>
+  </header>
+
+  <main class="container">
+    <!-- filtros e lista de salas -->
+    <section id="user-view">
+      <form id="filter-form" class="row">
+        <label>Prédio
+          <select id="filter-building"><option value="">Todos</option></select>
+        </label>
+        <label>Capacidade mínima
+          <input type="number" id="filter-capacity" min="1" placeholder="Ex: 30" />
+        </label>
+        <label>Recursos
+          <select id="filter-resource" >
+            <option value="">Qualquer</option>
+            <option value="projetor">Projetor</option>
+            <option value="acessibilidade">Acessibilidade</option>
+          </select>
+        </label>
+        <button type="submit" class="btn">Filtrar</button>
+      </form>
+
+      <section id="rooms-list" class="grid"></section>
+
+      <!-- Modal de nova reserva -->
+      <dialog id="reserve-modal">
+        <form id="reserve-form">
+          <h3>Criar Reserva</h3>
+          <label>Título <input name="title" required maxlength="80" /></label>
+          <label>Solicitante <input name="requester" required /></label>
+          <label>Início <input type="datetime-local" name="start" required /></label>
+          <label>Fim <input type="datetime-local" name="end" required /></label>
+          <input type="hidden" name="roomId" />
+          <menu>
+            <button type="submit" class="btn">Reservar</button>
+            <button type="button" id="cancel-reserve">Cancelar</button>
+          </menu>
+          <p id="reserve-msg" class="msg"></p>
+        </form>
+      </dialog>
+
+      <section id="my-reservations">
+        <h2>Minhas Reservas</h2>
+        <ul id="reservations-list"></ul>
+      </section>
+    </section>
+
+    <!-- admin view -->
+    <section id="admin-view" hidden>
+      <h2>Admin — Gerenciar Salas</h2>
+      <form id="room-form">
+        <input name="id" type="hidden" />
+        <label>Nome <input name="name" required /></label>
+        <label>Prédio <input name="building" required /></label>
+        <label>Capacidade <input name="capacity" type="number" min="1" required /></label>
+        <label>Recursos (separe por vírgula) <input name="resources" placeholder="projetor,acessibilidade" /></label>
+        <button type="submit" class="btn">Salvar</button>
+        <button type="button" id="room-reset">Novo</button>
+        <p id="room-msg" class="msg"></p>
+      </form>
+
+      <section id="admin-rooms-list"></section>
+    </section>
+  </main>
+
+  <script type="module" src="js/app.js"></script>
+  <script type="module" src="js/admin.js"></script>
+</body>
+</html>
