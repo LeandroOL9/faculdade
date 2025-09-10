@@ -7,6 +7,32 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
+  <form id="Listagem">
 
+    <label for="building">Prédio
+      <select id="building">
+        <option>todos</option>
+        <option value="bloco-a">bloco A</option>
+        <option value="bloco-b">bloco B</option>
+        <option value="bloco-c">bloco C</option>
+        <option value="bloco-d">bloco D</option>
+      </select>
+    </label>
+
+    <fieldset>
+      <legend>capacidade</legend>
+      <input type="number" id="min-capacidade" placeholder="min">
+      <input type="number" id="max-capacidade" placeholder="max">
+    </fieldset>
+  <fieldset id="resources">
+  <legend>recursos</legend>
+
+    <label for="todos">Todos
+      <input type="checkbox" id="todos">
+    </label>
+
+  </fieldset>
+
+  </form>
 </body>
 </html>
