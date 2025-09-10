@@ -1,35 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>cadastro</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Cadastrar Reserva</title>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <a href="index.html">voltar</a>
+<body class="min-h-screen bg-gray-900 text-gray-100 p-6 flex flex-col items-center">
+  <div class="w-full max-w-lg space-y-6">
+    <a href="index.html" class="inline-block px-3 py-2 bg-gray-700 border border-gray-600 rounded hover:bg-gray-600">← Voltar</a>
 
-    <form id="reserva">
-        <label for="title">Titulo: 
-            <input type="text" id="title" name="title" placeholder="Titulo da Reserva">
-        </label>
+    <h1 class="text-2xl font-bold">Nova Reserva</h1>
 
-        <label for="start">Data e hora Inicio: 
-            <input type="datetime-local" id="start" name="start">
-        </label>
+    <form id="reserva" class="grid gap-4 bg-gray-800 border border-gray-700 p-6 rounded-lg">
+      <label class="block">
+        <span class="block mb-1">Título:</span>
+        <input type="text" id="title" name="title" placeholder="Titulo da Reserva"
+          class="w-full p-2 bg-gray-700 border border-gray-600 rounded" required>
+      </label>
 
-        <label for="end">Data e hora Fim: 
-            <input type="datetime-local" id="end" name="end">
-        </label>        
+      <label class="block">
+        <span class="block mb-1">Data e hora início:</span>
+        <input type="datetime-local" id="start" name="start" min="1900-01-01T00:00" max="2099-12-31T23:59"
+          class="w-full p-2 bg-gray-700 border border-gray-600 rounded" required>
+      </label>
 
-        <label for="requester">Solicitante: 
-            <input type="text" id="requester" name="requester" placeholder="Nome Sobrenome">
-        </label>
+      <label class="block">
+        <span class="block mb-1">Data e hora fim:</span>
+        <input type="datetime-local" id="end" name="end" min="1900-01-01T00:00" max="2099-12-31T23:59"
+          class="w-full p-2 bg-gray-700 border border-gray-600 rounded" required>
+      </label>
 
-        <label for="salas">Sala: 
-            <select id="salas" name="salas"></select>
-        </label>
+      <label class="block">
+        <span class="block mb-1">Solicitante:</span>
+        <input type="text" id="requester" name="requester" placeholder="Nome Sobrenome"
+          class="w-full p-2 bg-gray-700 border border-gray-600 rounded" required>
+      </label>
 
-        <button type="submit">Enviar</button>
+      <label class="block">
+        <span class="block mb-1">Sala:</span>
+        <select id="salas" name="salas"
+          class="w-full p-2 bg-gray-700 border border-gray-600 rounded" required>
+          <option value="">Selecione uma sala...</option>
+        </select>
+      </label>
+
+      <button type="submit" class="w-full py-2 bg-blue-600 rounded hover:bg-blue-500">Enviar</button>
     </form>
+  </div>
+
+  <script src="js/cadastro.js"></script>
 </body>
 </html>

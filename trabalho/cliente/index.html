@@ -1,41 +1,67 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Listagem</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Sistema de Reservas</title>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-  <form id="Listagem">
+<body class="min-h-screen bg-gray-900 text-gray-100 p-6 space-y-8">
+  <!-- HEADER -->
+  <header class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
+    <h1 class="text-3xl font-bold">Reserva de Salas</h1>
+    <nav class="flex gap-4 text-sm">
+      <a href="cadastro.html" class="px-3 py-2 bg-gray-700 border border-gray-600 rounded hover:bg-gray-600">Nova Reserva</a>
+      <a href="salas.html" class="px-3 py-2 bg-gray-700 border border-gray-600 rounded hover:bg-gray-600">Gerenciar Salas</a>
+    </nav>
+  </header>
 
-    <label for="building">Prédio
-      <select id="building">
-        <option>todos</option>
-        <option value="bloco-a">bloco A</option>
-        <option value="bloco-b">bloco B</option>
-        <option value="bloco-c">bloco C</option>
-        <option value="bloco-d">bloco D</option>
-      </select>
-    </label>
+  <!-- FILTROS -->
+  <section>
+    <h2 class="text-xl font-semibold mb-3">Filtros</h2>
+    <form id="filtros" class="grid gap-6 md:grid-cols-2 bg-gray-800 border border-gray-700 p-6 rounded-lg">
+      <label class="block">
+        <span class="block mb-1">Prédio:</span>
+        <select id="building" class="w-full p-2 bg-gray-700 border border-gray-600 rounded">
+          <option value="">Todos</option>
+          <option value="Bloco A">Bloco A</option>
+          <option value="Bloco B">Bloco B</option>
+          <option value="Bloco C">Bloco C</option>
+          <option value="Bloco D">Bloco D</option>
+        </select>
+      </label>
 
-    <fieldset>
-      <legend>capacidade</legend>
-      <input type="number" id="min-capacidade" placeholder="min">
-      <input type="number" id="max-capacidade" placeholder="max">
-    </fieldset>
-  <fieldset id="resources">
-  <legend>recursos</legend>
+      <fieldset class="block">
+        <legend class="mb-2">Capacidade:</legend>
+        <div class="flex gap-2">
+          <input type="number" id="min-capacidade" placeholder="Mínimo"
+            class="flex-1 p-2 bg-gray-700 border border-gray-600 rounded">
+          <input type="number" id="max-capacidade" placeholder="Máximo"
+            class="flex-1 p-2 bg-gray-700 border border-gray-600 rounded">
+        </div>
+      </fieldset>
 
-    <label for="todos">Todos
-      <input type="checkbox" id="todos">
-    </label>
+      <fieldset id="resources" class="md:col-span-2">
+        <legend class="mb-2">Recursos:</legend>
+        <div class="flex flex-wrap gap-4">
+          <!-- preenchido dinamicamente via JS -->
+        </div>
+      </fieldset>
 
-  </fieldset>
+      <button type="submit" class="md:col-span-2 w-full py-2 bg-blue-600 rounded hover:bg-blue-500">Aplicar Filtros</button>
+    </form>
+  </section>
 
-  </form>
-  <ul id="salas">
-    
-  </ul>
+  <section>
+    <h2 class="text-xl font-semibold mb-3">Salas Disponíveis</h2>
+    <ul id="salas" class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3"></ul>
+  </section>
+
+  <section>
+    <h2 class="text-xl font-semibold mb-3">Minhas Reservas</h2>
+    <ul id="minhas-reservas" class="divide-y divide-gray-700 border border-gray-700 rounded-lg bg-gray-800"></ul>
+  </section>
+
+  <script src="src/index.js"></script>
 </body>
 </html>
