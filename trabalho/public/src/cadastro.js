@@ -1,4 +1,4 @@
-const BASE_URL = "";
+const BASE_URL = "https://sistema-de-reservas-node-js-express.onrender.com/api";
 
 async function carregarSalas() {
   try {

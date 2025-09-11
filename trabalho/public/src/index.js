@@ -1,9 +1,5 @@
-// public/js/index.js
-const BASE_URL = "http://localhost:3000"; // ajuste se necessário
+const BASE_URL = "https://sistema-de-reservas-node-js-express.onrender.com/api";
 
-// -----------------------------
-// Utilitário para criar elementos
-// -----------------------------
 function createEl(tag, classes = "", text = "") {
   const el = document.createElement(tag);
   if (classes) el.className = classes;
@@ -11,9 +7,6 @@ function createEl(tag, classes = "", text = "") {
   return el;
 }
 
-// -----------------------------
-// Carregar recursos dinâmicos
-// -----------------------------
 async function carregarRecursos() {
   try {
     const res = await fetch(`${BASE_URL}/rooms`);
@@ -43,15 +36,11 @@ async function carregarRecursos() {
   }
 }
 
-// -----------------------------
-// Carregar salas (com filtros)
-// -----------------------------
 async function carregarSalas(filtros = {}) {
   try {
     const res = await fetch(`${BASE_URL}/rooms`);
     let salas = await res.json();
 
-    // aplica filtros
     if (filtros.building) {
       salas = salas.filter(s => s.building === filtros.building);
     }
@@ -75,7 +64,7 @@ async function carregarSalas(filtros = {}) {
     salas.forEach(s => {
       const li = createEl(
         "li",
-        "border rounded p-4 bg-white shadow"
+        "border rounded p-4 bg-grey-900 shadow"
       );
       li.innerHTML = `
         <h3 class="font-bold text-lg">${s.name}</h3>
@@ -89,8 +78,6 @@ async function carregarSalas(filtros = {}) {
     console.error("Erro ao carregar salas", err);
   }
 }
-
-// Carregar minhas reservas
 
 async function carregarReservas() {
   try {
@@ -133,15 +120,11 @@ async function carregarReservas() {
   }
 }
 
-// -----------------------------
-// Inicialização
-// -----------------------------
 window.addEventListener("DOMContentLoaded", () => {
   carregarRecursos();
   carregarSalas();
   carregarReservas();
 
-  // filtros
   document.getElementById("filtros").addEventListener("submit", (e) => {
     e.preventDefault();
 
