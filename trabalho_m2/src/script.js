@@ -1,4 +1,6 @@
-const ESTOQUE_CARROS = [
+
+(() => {
+   const ESTOQUE_CARROS = [
     { id: 101, modelo: "Honda Civic LX", ano: 2023, preco: 125000.50, status: "DISPONIVEL", vendedor: null,
       identificacao: " CHASSI: br359B202300459x / PLACA: XYZ-7I19 / STATUS: OK " },
     { id: 102, modelo: "CHEVROLET Tracker LTZ", ano: 2024, preco: 142800.00, status: "VENDIDO", vendedor: "José Silva",
@@ -19,4 +21,36 @@ const ESTOQUE_CARROS = [
       identificacao: " CHASSI: ja111J202400888h / PLACA: TOY-4F88 / STATUS: OK " },
     { id: 110, modelo: "Caoa Chery Tiggo 5x", ano: 2023, preco: 120000.00, status: "DISPONIVEL", vendedor: null,
       identificacao: " CHASSI: ch222K202300999g / PLACA: TIG-3C99 / STATUS: OK " },
-];
+  ];
+  const tbody = document.querySelector('tbody');
+
+  const apresenta = () => {
+    tbody.innerHTML = "";
+    ESTOQUE_CARROS.forEach(carro => {
+      const tr = document.createElement('tr');
+      const info = [
+        carro.modelo,
+        carro.ano,
+        carro.preco.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }),
+        carro.status
+      ];
+      info.forEach(value => {
+        const td = document.createElement('td');
+        td.textContent = value;
+        tr.appendChild(td);
+      });
+      tbody.appendChild(tr);
+    });
+  };
+  const classificar = () => {
+    ESTOQUE_CARROS.sort((a, b) => b.preco - a.preco);
+  };
+  
+  const aplicarFiltros = () => {
+    
+  };
+
+  classificar();
+  apresenta();
+  aplicarFiltros();
+})();
