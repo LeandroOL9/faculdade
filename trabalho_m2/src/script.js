@@ -64,7 +64,6 @@
         tdAcoes.textContent = "Fechado";
       }
       tr.appendChild(tdAcoes);
-
       tbody.appendChild(tr);
     });
   };
@@ -90,6 +89,11 @@
 
     apresenta(filtrados);
   };
+  document.getElementById('filtros').addEventListener("submit", e => {
+    e.preventDefault();
+    aplicarFiltros();
+  });
+  document.getElementById('filtros').addEventListener("reset", () => aplicarFiltros());
 
   const venderCarro = (carId) => {
     const carro = ESTOQUE_CARROS.find(c => c.id === carId);
@@ -101,11 +105,32 @@
     }
   };
 
-  document.getElementById('filtros').addEventListener("submit", e => {
+
+//card 02
+const analisarPrecos = () => {
+  const initialValue = 0;
+  const soma = ESTOQUE_CARROS.reduce(
+    (i, currentValue) => i + currentValue.preco,
+    initialValue
+  );
+
+  const media = soma / ESTOQUE_CARROS.length;
+
+  const spannovo = () => {
+    const span = document.getElementById('preco-medio');
+    span.textContent = media;
+  };
+  spannovo();
+};
+document.getElementById('btn-analisar-precos')
+  .addEventListener("click", e => {
     e.preventDefault();
-    aplicarFiltros();
+    analisarPrecos();
   });
-  document.getElementById('filtros').addEventListener("reset", () => aplicarFiltros());
+
+//card 03
 
   apresenta();
 })();
+
+
