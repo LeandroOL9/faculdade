@@ -1,6 +1,5 @@
-
 (() => {
-   const ESTOQUE_CARROS = [
+  const ESTOQUE_CARROS = [
     { id: 101, modelo: "Honda Civic LX", ano: 2023, preco: 125000.50, status: "DISPONIVEL", vendedor: null,
       identificacao: " CHASSI: br359B202300459x / PLACA: XYZ-7I19 / STATUS: OK " },
     { id: 102, modelo: "CHEVROLET Tracker LTZ", ano: 2024, preco: 142800.00, status: "VENDIDO", vendedor: "José Silva",
@@ -22,35 +21,91 @@
     { id: 110, modelo: "Caoa Chery Tiggo 5x", ano: 2023, preco: 120000.00, status: "DISPONIVEL", vendedor: null,
       identificacao: " CHASSI: ch222K202300999g / PLACA: TIG-3C99 / STATUS: OK " },
   ];
+
   const tbody = document.querySelector('tbody');
 
-  const apresenta = () => {
+  const apresenta = (lista = ESTOQUE_CARROS) => {
     tbody.innerHTML = "";
-    ESTOQUE_CARROS.forEach(carro => {
+    lista.sort((a, b) => b.preco - a.preco);
+
+    lista.forEach(carro => {
       const tr = document.createElement('tr');
       const info = [
         carro.modelo,
         carro.ano,
         carro.preco.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }),
-        carro.status
+        carro.status,
+        carro.vendedor || "-"
       ];
       info.forEach(value => {
         const td = document.createElement('td');
         td.textContent = value;
         tr.appendChild(td);
       });
+
+      const tdIdent = document.createElement('td');
+      const btnIdent = document.createElement('button');
+      btnIdent.textContent = "Analisar ID";
+      btnIdent.className = "btn btn-sm btn-info";
+      btnIdent.addEventListener("click", () => {
+        console.log("Identificação do carro:", carro.identificacao);
+      });
+      tdIdent.appendChild(btnIdent);
+      tr.appendChild(tdIdent);
+
+      const tdAcoes = document.createElement('td');
+      if (carro.status === "DISPONIVEL" || carro.status === "NEGOCIACAO") {
+        const btnVender = document.createElement('button');
+        btnVender.textContent = "Vender";
+        btnVender.className = "btn btn-sm btn-success";
+        btnVender.addEventListener("click", () => venderCarro(carro.id));
+        tdAcoes.appendChild(btnVender);
+      } else if (carro.status === "VENDIDO") {
+        tdAcoes.textContent = "Fechado";
+      }
+      tr.appendChild(tdAcoes);
+
       tbody.appendChild(tr);
     });
   };
-  const classificar = () => {
-    ESTOQUE_CARROS.sort((a, b) => b.preco - a.preco);
-  };
-  
+
   const aplicarFiltros = () => {
-    
+    let filtrados = [...ESTOQUE_CARROS];
+    const modelo = document.getElementById('modelo').value.toLowerCase();
+    const preco = parseFloat(document.getElementById('preco').value);
+    const status = document.getElementById('status').value;
+
+    if (modelo) {
+      filtrados = filtrados.filter(c =>
+        c.modelo.toLowerCase().includes(modelo) ||
+        c.ano.toString().includes(modelo)
+      );
+    }
+    if (!isNaN(preco)) {
+      filtrados = filtrados.filter(c => c.preco <= preco);
+    }
+    if (status) {
+      filtrados = filtrados.filter(c => c.status === status);
+    }
+
+    apresenta(filtrados);
   };
 
-  classificar();
+  const venderCarro = (carId) => {
+    const carro = ESTOQUE_CARROS.find(c => c.id === carId);
+    const nome = prompt("Digite o nome do vendedor:");
+    if (nome) {
+      carro.status = "VENDIDO";
+      carro.vendedor = nome;
+      aplicarFiltros();
+    }
+  };
+
+  document.getElementById('filtros').addEventListener("submit", e => {
+    e.preventDefault();
+    aplicarFiltros();
+  });
+  document.getElementById('filtros').addEventListener("reset", () => aplicarFiltros());
+
   apresenta();
-  aplicarFiltros();
 })();

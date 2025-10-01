@@ -1,50 +1,72 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <title>Gestão de Estoque</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <title>Gestão de Estoque</title>
 </head>
-<body class="">
-<section class="container">
+<body>
+<section class="container my-3">
 
-    <div class="card" id="card1">  
-        <div class="card-body"></div>
+  <div class="row g-3">
+    <div class="col-md-4">
+      <div class="card" id="card1">
+        <div class="card-body">
+          <h5 class="card-title">Análise de Identificação</h5>
+          <p><strong>Placa:</strong> <span id="placa-info">-</span></p>
+          <p><strong>Cód. Fábrica:</strong> <span id="cod-fabrica">-</span></p>
+          <p><strong>Validação:</strong> <span id="validacao">-</span></p>
+        </div>
+      </div>
     </div>
 
-    <div class="card" id="card2">
-          <div class="card-body"></div>
+    <div class="col-md-4">
+      <div class="card" id="card2">
+        <div class="card-body">
+          <h5 class="card-title">Análise de Preços</h5>
+          <p><strong>Preço Médio:</strong> <span id="preco-medio">-</span></p>
+          <p><strong>Carro Mais Caro:</strong> <span id="carro-caro">-</span></p>
+          <p><strong>Bônus (5%):</strong> <span id="bonus">-</span></p>
+          <button class="btn btn-sm btn-primary" id="btn-analisar-precos">Analisar Preços</button>
+        </div>
+      </div>
     </div>
 
-    <div class="card" id="card3">
-          <div class="card-body"></div>
+    <div class="col-md-4">
+      <div class="card" id="card3">
+        <div class="card-body">
+          <h5 class="card-title">Previsão de Entrega</h5>
+          <label for="input-dias-uteis">Dias Úteis:</label>
+          <input type="number" id="input-dias-uteis" class="form-control mb-2" placeholder="Ex: 10">
+          <button class="btn btn-sm btn-success" id="btn-calcular-entrega">Calcular</button>
+          <p><strong>Data Atual:</strong> <span id="data-atual">-</span></p>
+          <p><strong>Entrega Prevista:</strong> <span id="data-entrega">-</span></p>
+        </div>
+      </div>
     </div>
+  </div>
 
 </section>
 
-<section class="container">
-    <h2 class="">FILTROS: </h2>
-    <form id="filtros" class="">
-        <label for="modelo">Modelos:
-            <input type="text" id="modelo" placeholder="EX: Honda Civic LX - 2023">
-        </label>
-        <label for="preco">Valor Máximo:
-            <input type="number" id="preco" placeholder="EX: 100000 R$">
-        </label>
-        <label for="status">Status:
-            <select id="status" class="">
-                <option value="">Todos</option>
-            </select> 
-        </label>
-        <button type="submit" class="">Aplicar Filtros</button>
-        <button type="reset" class="">Limpar</button>
-    </form>
+<section class="container my-3">
+  <h2>FILTROS:</h2>
+  <form id="filtros" class="d-flex gap-2 flex-wrap">
+    <input type="text" id="modelo" class="form-control" placeholder="EX: Honda Civic LX - 2023">
+    <input type="number" id="preco" class="form-control" placeholder="EX: 100000">
+    <select id="status" class="form-select">
+      <option value="">Todos</option>
+
+    </select>
+    <button type="submit" class="btn btn-primary">Aplicar Filtros</button>
+    <button type="reset" class="btn btn-secondary">Limpar</button>
+  </form>
 </section>
 
-<section class="container">
-<table>
-    <thead>
+<section class="container my-3">
+  <table class="table table-bordered table-striped">
+    <thead class="table-dark">
+      <tr>
         <th>Modelo</th>
         <th>Ano</th>
         <th>Preço</th>
@@ -52,12 +74,12 @@
         <th>Vendedor</th>
         <th>Identificação</th>
         <th>Ações</th>
+      </tr>
     </thead>
     <tbody></tbody>
-</table>
+  </table>
 </section>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 <script src="src/script.js"></script>
 </body>
 </html>
