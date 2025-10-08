@@ -126,3 +126,147 @@ window.addEventListener("DOMContentLoaded", () => {
     carregarSalas({ building: building || null, minCap: minCap || null, maxCap: maxCap || null, resources });
   });
 });
+
+const API_URL_PRODUCTS = 'https://fakestoreapi.com/products';
+const API_URL_CATEGORIES = 'https://fakestoreapi.com/products/categories';
+
+let produtos = [];
+let categorias = [];
+let categoriaAtiva = null;
+
+const produtosContainer = document.getElementById('produtos');
+const categoriasContainer = document.getElementById('categorias');
+const termoInput = document.getElementById('termo');
+const form = document.getElementById('filtros');
+const msg = document.getElementById('mensagem');
+
+// -----------------------------------------
+// 1. Carrega todos os produtos
+// -----------------------------------------
+function loadAllData() {
+  msg.textContent = "Carregando produtos...";
+  fetch(API_URL_PRODUCTS)
+    .then(res => {
+      if (!res.ok) throw new Error("Erro na resposta da API");
+      return res.json();
+    })
+    .then(data => {
+      produtos = data;
+      renderProducts(produtos);
+      msg.textContent = "";
+    })
+    .catch(err => {
+      msg.textContent = "Erro ao carregar dados. Tente novamente.";
+      console.error(err);
+    });
+}
+
+// -----------------------------------------
+// 2. Carrega categorias e gera botões
+// -----------------------------------------
+function loadCategories() {
+  fetch(API_URL_CATEGORIES)
+    .then(res => {
+      if (!res.ok) throw new Error("Erro ao buscar categorias");
+      return res.json();
+    })
+    .then(data => {
+      categorias = data;
+      renderCategories();
+    })
+    .catch(err => {
+      console.error("Erro ao carregar categorias:", err);
+    });
+}
+
+// -----------------------------------------
+// 3. Renderiza categorias dinamicamente
+// -----------------------------------------
+function renderCategories() {
+  categoriasContainer.innerHTML = "";
+
+  const btnTodos = createButton("Todas", true);
+  categoriasContainer.appendChild(btnTodos);
+
+  categorias.forEach(cat => {
+    const btn = createButton(cat);
+    categoriasContainer.appendChild(btn);
+  });
+}
+
+function createButton(texto, isAll = false) {
+  const btn = document.createElement("button");
+  btn.textContent = texto;
+  btn.className = "btn btn-outline-primary btn-sm";
+  btn.addEventListener("click", e => {
+    e.preventDefault();
+    categoriaAtiva = isAll ? null : texto;
+    aplicarFiltros();
+  });
+  return btn;
+}
+
+// -----------------------------------------
+// 4. Renderiza produtos
+// -----------------------------------------
+function renderProducts(lista) {
+  produtosContainer.innerHTML = "";
+
+  if (!lista.length) {
+    produtosContainer.innerHTML = "<p class='text-center opacity-75'>Nenhum produto encontrado.</p>";
+    return;
+  }
+
+  lista.forEach(p => {
+    const col = document.createElement("div");
+    col.className = "col-12 col-sm-6 col-lg-4";
+
+    col.innerHTML = `
+      <div class="card bg-secondary bg-opacity-10 border border-secondary text-light h-100">
+        <img src="${p.image}" class="card-img-top" alt="${p.title}">
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">${p.title}</h5>
+          <p class="card-text small flex-grow-1">${p.description.substring(0, 80)}...</p>
+          <p class="fw-bold">R$ ${p.price.toFixed(2)}</p>
+          <button class="btn btn-outline-primary btn-sm mt-auto">Comprar</button>
+        </div>
+      </div>`;
+    
+    produtosContainer.appendChild(col);
+  });
+}
+
+// -----------------------------------------
+// 5. Aplicar filtros locais (categoria + texto)
+// -----------------------------------------
+function aplicarFiltros() {
+  let filtrados = [...produtos];
+
+  if (categoriaAtiva) {
+    filtrados = filtrados.filter(p => p.category === categoriaAtiva);
+  }
+
+  const termo = termoInput.value.toLowerCase().trim();
+  if (termo) {
+    filtrados = filtrados.filter(p =>
+      p.title.toLowerCase().includes(termo) ||
+      p.description.toLowerCase().includes(termo)
+    );
+  }
+
+  renderProducts(filtrados);
+}
+
+// -----------------------------------------
+// 6. Listener do formulário de busca
+// -----------------------------------------
+form.addEventListener("submit", e => {
+  e.preventDefault();
+  aplicarFiltros();
+});
+
+// -----------------------------------------
+// 7. Inicialização
+// -----------------------------------------
+loadAllData();
+loadCategories();
