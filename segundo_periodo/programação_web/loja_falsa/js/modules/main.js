@@ -7,14 +7,13 @@ import * as cart from '../modules/cart/cart.js';
     'use strict';
 
     let products = [];
-    let currentCategory = 'all'; <small class="text-muted">${product.category}</small>
+    let currentCategory = 'all';
 
     const productList = document.querySelector('#product-list');
     const categoryFilters = document.querySelector('#category-filters');
 
-    // Renderiza lista de produtos
     const renderProducts = (list) => {
-        productList.innerHTML = ''; // limpa antes de renderizar
+        productList.innerHTML = '';
         if (list.length === 0) {
             ui.updateStatus('', 'none');
             productList.innerHTML = ui.cardProductEmpty();
@@ -24,6 +23,7 @@ import * as cart from '../modules/cart/cart.js';
             const col = ui.cardProduct(prod);
             productList.appendChild(col);
         });
+        addToCartEventListner();
     };
     
     const showProducts = async (filter = 'all') => {
@@ -43,7 +43,6 @@ import * as cart from '../modules/cart/cart.js';
         const categories = await category.get();
         if (categories.length === 0) return;
 
-        // Adiciona botão "Todos"
         const allButton = ui.buttonCategory('all');
         allButton.textContent = 'Todos';
         categoryFilters.appendChild(allButton);
@@ -83,9 +82,7 @@ const addToCartEventListner = () => {
             });
         });
     }
-};
-
-
+    };
 
 
     showProducts();
