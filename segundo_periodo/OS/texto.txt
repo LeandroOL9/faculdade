@@ -1,0 +1,28 @@
+Leandro de Oliveira
+
+1 Questão
+A)
+
+B)  O programa cria 2 threads,
+    ambas executam 10.000 incrementos sobre contador, 
+    o synchronized garante exclusão multua, assim so uma threads por vez acessa o método.
+
+C)  Sim, graças ao uso correto de synchronized.
+
+2 Questão
+A)  
+
+B)  O programa cria 2 threads,
+    ambas executam 10.000 incrementos sobre contador de forma asincronía,
+    assim sobre escrevendo errado a variavel contador gerando numeros abaixo dos 20.000 
+    esperados
+
+C)  não, dado a falta do synchronized na função encrementar.
+
+3 Questão
+A)
+
+B)
+
+C)
+
