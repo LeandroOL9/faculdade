@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pokedex</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  #main-container {
+    transition: margin-right 0.3s;
+  }
+  #details {
+    transition: right 0.3s;
+  }
+</style>
+</head>
+<body class="bg-red-600 text-white flex flex-col min-h-screen">
+
+  <header class="text-center py-6">
+    <h1 class="text-4xl font-bold tracking-wide">Pokédex</h1>
+    <p class="text-sm text-red-200 mt-1">Feita por Leandro de Oliveira</p>
+  </header>
+
+  <div id="status-message" class="w-full max-w-5xl px-4 mb-4"></div>
+
+  <div class="flex flex-1 w-full max-w-6xl mx-auto relative">
+    
+    <main id="main-container" class="flex-1 px-4 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 transition-all duration-300"></main>
+
+    <aside id="details" class="w-96 bg-white text-gray-800 fixed top-0 right-[-400px] h-full shadow-2xl overflow-y-auto flex flex-col transition-all duration-300 p-6">
+      <button id="close-details" class="self-end text-gray-500 hover:text-red-500 mb-2">✕</button>
+      <img id="details-img" class="w-32 h-32 mx-auto" alt="Pokémon">
+      <h2 id="details-name" class="font-bold text-2xl mt-2 text-center"></h2>
+      <p id="details-id" class="text-gray-600 text-center mt-1"></p>
+      <div id="details-types" class="flex justify-center gap-2 mt-2"></div>
+      <p id="details-height" class="mt-2 text-center"></p>
+      <p id="details-weight" class="mt-1 text-center"></p>
+      <p id="details-description" class="mt-2 text-center italic"></p>
+      <div id="evolution-chain" class="flex justify-center gap-4 mt-4 overflow-x-auto"></div>
+      <div class="flex justify-between mt-4">
+        <button id="prev-detail" class="bg-red-600 text-white px-4 py-2 rounded disabled:opacity-50">Anterior</button>
+        <button id="next-detail" class="bg-red-600 text-white px-4 py-2 rounded disabled:opacity-50">Próximo</button>
+      </div>
+    </aside>
+  </div>
+
+  <div class="flex justify-center gap-4 my-4">
+    <button id="volta" class="bg-white text-red-700 font-bold px-4 py-2 rounded-full shadow hover:bg-red-100 transition-colors">←</button>
+    <button id="vai" class="bg-white text-red-700 font-bold px-4 py-2 rounded-full shadow hover:bg-red-100 transition-colors">→</button>
+  </div>
+
+  <footer class="mt-auto py-4 text-center text-red-200 text-sm">
+    © 2025 Pokédex feita por Leandro de Oliveira
+  </footer>
+
+  <script type="module" src="js/modules/main.js"></script>
+</body>
+</html>

@@ -63,4 +63,4 @@ const buttonCategory = (category) => {
     return button;
 };
 
-export { cardProductEmpty, updateStatus, cardProduct, buttonCategory };
+export { cardProductEmpty, updateStatus, cardProduct, buttonCategory, cardCartItem };

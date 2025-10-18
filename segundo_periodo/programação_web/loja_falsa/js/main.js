@@ -72,18 +72,18 @@ import * as cart from '../modules/cart/cart.js';
         });
     };
 
-const addToCartEventListner = () => {
-    const buttons = document.querySelectorAll('.add-to-cart');
-    if (buttons.length > 0) {
-        buttons.forEach(btn => {
-            btn.addEventListener('click', (event) => {
-                const { id, title, price, image } = event.currentTarget.dataset;
-                cart.add(Number(id), title, Number(price), image);
+    const addToCartEventListner = () => {
+        const buttons = document.querySelectorAll('.add-to-cart');
+        if (buttons.length > 0) {
+            buttons.forEach(btn => {
+                btn.addEventListener('click', (event) => {
+                    const { id, title, price, image } = event.currentTarget.dataset;
+                    cart.add(Number(id), title, Number(price), image);
+                });
             });
-        });
-    }
+        }
     };
-
+    
 
     showProducts();
     showCategories();
