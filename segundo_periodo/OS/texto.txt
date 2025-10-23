@@ -1,7 +1,7 @@
 Leandro de Oliveira
 
 1 Questão
-A)
+A) Print_1.png
 
 B)  O programa cria 2 threads,
     ambas executam 10.000 incrementos sobre contador, 
@@ -10,7 +10,7 @@ B)  O programa cria 2 threads,
 C)  Sim, graças ao uso correto de synchronized.
 
 2 Questão
-A)  
+A)  Print_2.png
 
 B)  O programa cria 2 threads,
     ambas executam 10.000 incrementos sobre contador de forma asincronía,
@@ -20,9 +20,9 @@ B)  O programa cria 2 threads,
 C)  não, dado a falta do synchronized na função encrementar.
 
 3 Questão
-A)
+A) Print_3.png
 
-B)
+B)  
 
 C)
 
