@@ -31,7 +31,6 @@ const showDetails = async (pokemon, allPokemons, index) => {
     main.style.marginRight = '400px';
     details.style.right = '0';
     
-//refatorar esssa parada aqui slc
     document.getElementById('details-img').src = pokemon.sprites.front_default;
     document.getElementById('details-name').textContent = capitalize(pokemon.name);
     document.getElementById('details-id').textContent = `#${pokemon.id.toString().padStart(3,'0')}`;

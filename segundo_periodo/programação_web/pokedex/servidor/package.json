@@ -1,0 +1,13 @@
+{
+  "name": "servidor",
+  "version": "1.0.0",
+  "description": "API pokemon",
+  "main": "src/server-pokeapi.js",
+  "scripts": {
+    "dev": "node --watch src/server-pokeapi.js"
+  },
+  "type": "module",
+  "keywords": [],
+  "author": "Lendro",
+  "license": "ISC"
+}
