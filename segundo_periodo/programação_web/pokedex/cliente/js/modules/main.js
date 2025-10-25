@@ -2,26 +2,35 @@ import * as pkm from './pkm/pkm.js';
 import * as ui from '../utils/ui.js';
 
 (() => {
-    const container = document.getElementById('main-container');
-    let currentPokemons = [];
-    let nextUrl = null;
-    let prevUrl = null;
+  const container = document.getElementById('main-container');
+  let currentOffset = 0;
+  const limit = 20;
 
-    const loadPokemons = async (url) => {
-        const data = await pkm.getPokemons(url);
-        currentPokemons = data.pokemons;
-        nextUrl = data.next;
-        prevUrl = data.previous;
+  let currentPokemons = [];
 
-        ui.renderCards(currentPokemons, container, (p) => {
-            const idx = currentPokemons.findIndex(pk => pk.id === p.id);
-            ui.showDetails(p, currentPokemons, idx);
-        });
-    };
+  const loadPokemons = async () => {
+    ui.showStatus('Carregando Pokémon...');
+    const data = await pkm.getPokemons(limit, currentOffset);
+    currentPokemons = data.results || [];
+    ui.hideStatus();
 
-    document.getElementById('vai').addEventListener('click', () => { if(nextUrl) loadPokemons(nextUrl); });
-    document.getElementById('volta').addEventListener('click', () => { if(prevUrl) loadPokemons(prevUrl); });
-    document.getElementById('close-details').addEventListener('click', ui.hideDetails);
+    ui.renderCards(currentPokemons, container, (p) => {
+      const idx = currentPokemons.findIndex(pk => pk.id === p.id);
+      ui.showDetails(p, currentPokemons, idx);
+    });
+  };
 
+  document.getElementById('vai').addEventListener('click', () => {
+    currentOffset += limit;
     loadPokemons();
+  });
+
+  document.getElementById('volta').addEventListener('click', () => {
+    currentOffset = Math.max(0, currentOffset - limit);
+    loadPokemons();
+  });
+
+  document.getElementById('close-details').addEventListener('click', ui.hideDetails);
+
+  loadPokemons();
 })();
